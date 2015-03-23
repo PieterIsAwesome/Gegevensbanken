@@ -10,6 +10,9 @@
 
 
 echo "Welcome to the shipping web application!<br /><br />";
-echo "Today is " . date("dS F y"); echo "<br />";
+echo "Today is " . date("dS F Y"); echo "<br />";
 
+?>
+<?php
+	require("template/bottom.tpl.php");
 ?>

@@ -13,6 +13,9 @@ session_start(); 		// -- session_start() op deze plek is niet erg netjes, maar v
 	<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
+<div class = "header">
+<h1> Shipping database</h1>
+</div>
 <div class="navigation">
 <h2 class="indexTitle">Index</h2>
 <ul>

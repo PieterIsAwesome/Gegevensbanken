@@ -41,3 +41,21 @@ h2.contentTitle {
 h2.indexTitle {
    background: #2EBAB8;
 }
+.hoverclass table ,td,th{
+border : 1px solid black;
+border-collapse: collapse;}
+.hoverclass th{background:#B8B894;}
+.hoverclass tr:nth-child(even) {background: #CCC;}
+.hoverclass tr:nth-child(odd) {background: #FFF;}
+
+.hoverclass tr:hover{
+	background: #B8B894;
+}
+.footer{
+	clear: both;
+	width:99%;
+	background-color:black;
+
+	}
+.footer p,.footer a{
+color :white;}

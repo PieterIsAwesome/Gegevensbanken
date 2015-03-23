@@ -11,13 +11,14 @@
     $mapper = new gb\mapper\CustomerMapper();//
     $allCustomer = $mapper->findAll();
 ?>
+<div class='hoverclass'>
 	<table>
             <tr>
-                <td>Ssn</td>
-                <td>First name</td>
-                <td>Last name</td>
-                <td>Address</td>
-                <td>City</td>
+                <th>Ssn</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Address</th>
+                <th>City</th>
             </tr>
 <?php
     foreach($allCustomer as $customer) {
@@ -33,6 +34,7 @@
 }
 ?>
 </table>
+</div>
 <?php
 	require("template/bottom.tpl.php");
 ?>
