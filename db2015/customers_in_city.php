@@ -8,10 +8,12 @@
 	// algemene pagina lay-out en het menu.
 	require("template/top.tpl.php");
 
-    require_once( "gb/controller/ListCustomerInCityController.php" );
-    $filterController = new gb\controller\ListCustomerInCityController();
-    $filterController->process();
+    
+	require_once("gb/mapper/cityMapper.php");
+	$cityMapper = new gb\mapper\cityMapper();
+	$allCities = $cityMapper->getAllCities();
 ?>
+
 <form method="post">
     
 
@@ -20,23 +22,31 @@
         <td style="width: 10%"></td>
         <td style="width: 10%">City</td>
         <td style="width: 40%">
-            <select style="width: 100%">
-                <option value="1">city 1</option>
-                <option value="2">Please retrieve more cities from the database</option>
+            <select style="width: 100%" name="city">
+				<?php foreach($allCities as $city){
+                echo "<option value="."'".$city ."'" .">".$city ."</option>" ;}
+                ?>
             </select>
         </td>
         <td style="width: 10%"><input type="submit" value="List customers in the city" name="list_customer"></td>
         <td style="width: 30%"></td>
     </tr>
-</table>    
+</table>  
+<div class = "hoverclass" > 
 	<table>
             <tr>
-                <td>Ssn</td>
-                <td>First name</td>
-                <td>Last name</td>
-                <td>Address</td>
-                <td>City</td>
+                <th>Ssn</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Address</th>
+                <th>City</th>
             </tr>
+			
+<?php
+require_once( "gb/controller/ListCustomerInCityController.php" );
+    $filterController = new gb\controller\ListCustomerInCityController();
+    $filterController->process();
+?>
 <?php
     require_once( "gb/mapper/CustomerMapper.php" );    
     $custMapper = new gb\mapper\CustomerMapper();//
@@ -45,8 +55,9 @@
 	
 
 </table>
-    
-</form>    
+</div>    
+</form> 
+   
 <?php
 	require("template/bottom.tpl.php");
 ?>

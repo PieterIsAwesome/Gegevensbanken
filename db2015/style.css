@@ -41,7 +41,7 @@ h2.contentTitle {
 h2.indexTitle {
    background: #2EBAB8;
 }
-.hoverclass table ,td,th{
+.hoverclass table ,.hoverclass td,.hoverclass th{
 border : 1px solid black;
 border-collapse: collapse;}
 .hoverclass th{background:#B8B894;}
@@ -51,6 +51,7 @@ border-collapse: collapse;}
 .hoverclass tr:hover{
 	background: #B8B894;
 }
+.header{}
 .footer{
 	clear: both;
 	width:99%;
