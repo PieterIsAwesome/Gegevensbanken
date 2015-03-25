@@ -11,7 +11,8 @@ class CustomerMapper extends Mapper {
     function __construct() {
         parent::__construct();
         $this->selectStmt = "SELECT * FROM CUSTOMER where ssn = ?";
-        $this->selectAllStmt = "SELECT * FROM CUSTOMER ";        
+        $this->selectAllStmt = "SELECT * FROM CUSTOMER ";
+		$this->insertStmt = "INSERT INTO CUSTOMER VALUES (?,?,?,?,?,?,?)";
     } 
     
     function getCollection( array $raw ) {
@@ -44,10 +45,10 @@ class CustomerMapper extends Mapper {
     }
 
     protected function doInsert( \gb\domain\DomainObject $object ) {
-        /*$values = array( $object->getName() ); 
+        $values = array( $object->getName() ); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
-        $object->setId( $id );*/
+        $object->setId( $id );
     }
     
     function update( \gb\domain\DomainObject $object ) {

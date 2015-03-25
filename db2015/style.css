@@ -44,6 +44,7 @@ h2.indexTitle {
 .hoverclass table ,.hoverclass td,.hoverclass th{
 border : 1px solid black;
 border-collapse: collapse;}
+
 .hoverclass th{background:#B8B894;}
 .hoverclass tr:nth-child(even) {background: #CCC;}
 .hoverclass tr:nth-child(odd) {background: #FFF;}
@@ -51,7 +52,15 @@ border-collapse: collapse;}
 .hoverclass tr:hover{
 	background: #B8B894;
 }
-.header{}
+.header{
+	background-color:pink;
+	height: 100px;
+	}
+.header h1{
+	color:white;
+	text-align:center;
+	margin-top:20px;
+	}
 .footer{
 	clear: both;
 	width:99%;
