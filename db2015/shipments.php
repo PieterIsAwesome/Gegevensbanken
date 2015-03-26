@@ -11,12 +11,12 @@
     $mapper = new gb\mapper\ShipmentMapper();//
     $allShipment = $mapper->findAll();
 ?>
-
+<div class = "hoverclass">
 <table>
     <tr>
-        <td>Shipment id</td>
-        <td>Volume</td>
-        <td>Weight</td>        
+        <th>Shipment id</th>
+        <th>Volume</th>
+        <th>Weight</th>        
     </tr>
 <?php
 	foreach($allShipment as $shipment) {
@@ -30,7 +30,7 @@
 }
 ?>
 </table>            
-
+</div>
 <?php
 	require("template/bottom.tpl.php");
 ?>

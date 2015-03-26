@@ -7,8 +7,9 @@
 	// algemene pagina lay-out en het menu.
 	require("template/top.tpl.php");
 ?>
+<div class="hoverclass">
 	<table>
-            <tr><td>Ship id</td><td>Ship name</td><td>type</td></tr>
+            <tr><th>Ship id</th><th>Ship name</th><th>type</th></tr>
 <?php
     require_once( "gb/mapper/ShipMapper.php" );
     $mapper = new gb\mapper\ShipMapper();//
@@ -26,6 +27,7 @@
 	
 
 </table>
+</div>
 <?php
 	require("template/bottom.tpl.php");
 ?>

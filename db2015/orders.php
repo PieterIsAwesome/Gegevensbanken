@@ -11,13 +11,14 @@
     $mapper = new gb\mapper\OrdersMapper();//
     $allOrder = $mapper->findAll();
 ?>
+<div class="hoverclass">
 <table>
     <tr>
-        <td>Shipment id</td>
-        <td>Customer ssn</td>
-        <td>Ship broker name</td>
-        <td>Price</td>
-        <td>Order date</td>
+        <th>Shipment id</th>
+        <th>Customer ssn</th>
+        <th>Ship broker name</th>
+        <th>Price</th>
+        <th>Order date</th>
     </tr>
 <?php
     foreach($allOrder as $order) {
@@ -33,6 +34,7 @@
 }
 ?>
 </table>  
+</div>
 <?php
 	require("template/bottom.tpl.php");
 ?>

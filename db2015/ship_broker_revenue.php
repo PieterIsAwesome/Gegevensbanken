@@ -12,11 +12,11 @@
  <div class = hoverclass>
 <table>
     <tr>
-        <td>Ship broker name</td>
-        <td>From port</td>
-        <td>To port</td>
-        <td>Revenue</td>
-        <td>Date (mm/yyyy)</td>
+        <th>Ship broker name</th>
+        <th>From port</th>
+        <th>To port</th>
+        <th>Revenue</th>
+        <th>Date (mm/yyyy)</th>
     </tr>
 	<?php foreach($shipbrokerrevenue as $revenue){
 		?>

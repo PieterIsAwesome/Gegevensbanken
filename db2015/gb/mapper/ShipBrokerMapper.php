@@ -58,8 +58,8 @@ class ShipBrokerMapper extends Mapper {
 		$month = sprintf("%02d", $month);
 		$year = date('Y');
         $con = $this->getConnectionManager();
-        $selectStmt = "SELECT orders.ship_broker_name,sum(orders.price) as price_sum , route.from_port_code , route.to_port_code FROM orders,ships,route 
-		WHERE orders.shipment_id = ships.shipment_id and ships.route_id = route.route_id and orders.order_date LIKE"."'".$year."-".$month."-"."__' 
+        $selectStmt = "SELECT orders.ship_broker_name,sum(orders.price) as price_sum , f.port_name as from_port_code , t.port_name as to_port_code FROM orders,ships,route,port as f,port as t 
+		WHERE orders.shipment_id = ships.shipment_id and ships.route_id = route.route_id and f.port_code = route.from_port_code and t.port_code = route.to_port_code and orders.order_date LIKE"."'".$year."-".$month."-"."__' 
 		group by orders.ship_broker_name,route.from_port_code,route.to_port_code";
         $results = $con->executeSelectStatement($selectStmt, array());        
         return $results;
