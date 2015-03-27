@@ -3,6 +3,8 @@ namespace gb\controller;
 
 require_once("gb/controller/PageController.php");
 require_once("gb/mapper/CustomerMapper.php" );
+require_once("gb/mapper/OrdersMapper.php");
+use gb\mapper as mapper;
 
 class OrderShipmentController extends PageController {
     private $customer;
@@ -11,8 +13,11 @@ class OrderShipmentController extends PageController {
         
         if (!$this->isSsnNull()) {
             $this->customer = $this->lookupCustomer($_POST["ssn"]);
+			if (is_null($this->customer)){
+				echo "<a href ='/db2015/create_customer.php'> Create a new customer </a>";
+			}
         } 
-        
+ 
         if (isset($_POST["order_shipment"])){
             $this->placeShipmentOrder();
         }
@@ -32,7 +37,7 @@ class OrderShipmentController extends PageController {
     }
             
     function lookupCustomer ($ssn) {
-        //$this->customer = null;
+        $this->customer = null;
         $mapper = new \gb\mapper\CustomerMapper();//
         return $mapper->find($ssn);
     }
@@ -102,7 +107,20 @@ class OrderShipmentController extends PageController {
     }
     
     function placeShipmentOrder() {
-        print 'put insert code here';
+        $stmt = "insert into orders values (?,?,?,?,?)";
+		$stmt2 = "insert into shipment values (?,?,?)";
+		$shipment_id = $_POST['shipment_id'];
+		$volume = $_POST['volume'];
+		$weight = $_POST['weight'];
+		$price = $_POST['price'];
+		$date = $_POST['date'];
+		$ssn = $_POST['ssn'];
+		$ship_broker = $_POST['ship_broker'];
+		
+		$mapper = new mapper\OrdersMapper();
+		$con = $mapper->getConnectionManager();
+		$con->executeInsertStatement($stmt,array($shipment_id,$ssn,$ship_broker,$price,$date));
+		$con->executeInsertStatement($stmt2,array($shipment_id,$volume,$weight));
     }
 }
 
