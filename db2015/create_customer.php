@@ -37,7 +37,7 @@
         </tr>
         <tr>            
             <td>Mobile phone</td>
-            <td><input type ="text" name = "mobiphone"   ></td>
+            <td><input type ="text" name = "mobiphone" value=""  ></td>
             <td>City</td>
             <td><input type ="text" name = "city"   value=""></td>
             <td>Postal code</td>
