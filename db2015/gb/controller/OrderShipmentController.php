@@ -107,8 +107,11 @@ class OrderShipmentController extends PageController {
     }
     
     function placeShipmentOrder() {
+		// Voorbereiden van het insert statement voor de gegevens die in de tabel orders geplaatst moeten worden. 
         $stmt = "insert into orders values (?,?,?,?,?)";
+		// Voorbereiden van het insert statement voor de gegevens die in de tabel shipment geplaatst moeten worden.
 		$stmt2 = "insert into shipment values (?,?,?)";
+		// Opslaan van de door de gebruiker ingegeven gegevens.
 		$shipment_id = $_POST['shipment_id'];
 		$volume = $_POST['volume'];
 		$weight = $_POST['weight'];
@@ -116,12 +119,18 @@ class OrderShipmentController extends PageController {
 		$date = $_POST['date'];
 		$ssn = $_POST['ssn'];
 		$ship_broker = $_POST['ship_broker'];
-		
-		$mapper = new mapper\OrdersMapper();
-		$con = $mapper->getConnectionManager();
-		$con->executeInsertStatement($stmt,array($shipment_id,$ssn,$ship_broker,$price,$date));
-		$con->executeInsertStatement($stmt2,array($shipment_id,$volume,$weight));
-    }
+		// controleren of de datum voldoet aan het opgestelde patroon voor de datum in SQL
+		if(preg_match('/^[0-9]{4}/[0-9]{2}/[0-9]{2}$/', $date)){ 
+			// Het aanmaken van een nieuwe orders mapper.
+			$mapper = new mapper\OrdersMapper();
+			// Het opvragen van de connection.
+			$con = $mapper->getConnectionManager();
+			// Uitvoeren van de insert statements met de nodige gegevens.
+			$con->executeInsertStatement($stmt,array($shipment_id,$ssn,$ship_broker,$price,$date));
+			$con->executeInsertStatement($stmt2,array($shipment_id,$volume,$weight));
+    }	else{
+		echo "Make sure the date matches the yyyy/mm/dd ";
+	}
 }
 
 ?>

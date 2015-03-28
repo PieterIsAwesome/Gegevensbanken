@@ -13,6 +13,7 @@ echo "Welcome to the shipping web application!<br /><br />";
 echo "Today is " . date("dS F Y"); echo "<br />";
 
 ?>
+<!-- Het invoegen van een mooie image -->
 <img src="http://www.blastr.com/sites/blastr/files/mlp.jpg" width="300px" height="200px">
 <?php
 	// Voer de inhoud van "bottom.tpl.php" uit. Deze verzorgt de

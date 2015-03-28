@@ -3,8 +3,8 @@
 	// zal verschijnen.
 	$title = "Create a new customer";
 
-	// Voer de inhoud van "top.inc.php" uit. Deze verzorgt de
-	// algemene pagina lay-out en het menu.
+	// Voer de inhoud van "top.tpl.php" uit. Deze verzorgt de
+	// algemene pagina lay-out, de header en het menu.
 	require("template/top.tpl.php");
 
     require_once( "gb/controller/CreateCustomerController.php" );

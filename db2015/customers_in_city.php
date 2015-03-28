@@ -11,6 +11,7 @@
     
 	require_once("gb/mapper/cityMapper.php");
 	$cityMapper = new gb\mapper\cityMapper();
+	// Vraag alle steden in de database op.
 	$allCities = $cityMapper->getAllCities();
 ?>
 
@@ -23,7 +24,9 @@
         <td style="width: 10%">City</td>
         <td style="width: 40%">
             <select style="width: 100%" name="city">
-				<?php foreach($allCities as $city){
+			 
+				<?php // Maak een drop down menu met de verschillende steden
+				foreach($allCities as $city){
                 echo "<option value="."'".$city ."'" .">".$city ."</option>" ;}
                 ?>
             </select>

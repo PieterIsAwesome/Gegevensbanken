@@ -12,8 +12,9 @@
     
     $orderController = new gb\controller\OrderShipmentController();
     $orderController->process();
-    
+	// Aanmaken van een nieuwe ship broker mapper.
     $mapper = new gb\mapper\ShipBrokerMapper();
+	// Opvragen van alle ship brokers.
     $allShipBroker = $mapper->findAll();    
 ?>    
 <form method="post">
@@ -89,7 +90,8 @@
             <td style="width: 15%">Broker name</td>
             <td colspan="5" style="width: 85%">
                 <select style="width: 50%" name = "ship_broker">
-                    <?php
+					
+                    <?php // Maken van een dropdown met alle shipbrokers.
                     foreach($allShipBroker as $broker) {
                         echo "<option value=\"", $broker->getName(), "\" >", $broker->getName(), "</option>" ;
                     }

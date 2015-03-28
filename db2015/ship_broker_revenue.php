@@ -6,7 +6,9 @@
 	require("template/top.tpl.php");
 
     require_once( "gb/mapper/ShipBrokerMapper.php" );
-    $mapper = new gb\mapper\ShipBrokerMapper();//
+	// Het aanmaken van een nieuwe ship broker mapper.
+    $mapper = new gb\mapper\ShipBrokerMapper();
+	// op roepen van de reveunes van alle shipbrokers afgelopen maand.
 	$shipbrokerrevenue = $mapper -> getShipBrokerRevenues();
  ?>
  <div class = hoverclass>
@@ -18,7 +20,9 @@
         <th>Revenue</th>
         <th>Date (mm/yyyy)</th>
     </tr>
-	<?php foreach($shipbrokerrevenue as $revenue){
+	
+	<?php // Print alle shipbroker revenues af.
+	foreach($shipbrokerrevenue as $revenue){
 		?>
 		<tr>
 		<td><?php echo $revenue['ship_broker_name']; ?></td>
