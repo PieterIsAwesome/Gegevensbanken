@@ -19,7 +19,7 @@ class CreateCustomerController extends PageController {
 			// We voeren het insertstatement uit op de database.
 			$con->executeInsertStatement($insertStmt,$array);
 			// We geven aan dat de insert succesvol is verlopen.
-			echo "The new customer was correctly inserted."
+			echo "The new customer was correctly inserted.";
         }
     }
 }

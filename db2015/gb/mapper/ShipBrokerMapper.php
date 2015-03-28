@@ -59,8 +59,9 @@ class ShipBrokerMapper extends Mapper {
 		// Omzetten van de maand in de vorm XX
 		$month = sprintf("%02d", $month);
 		// Het berekenen van jaar.
-		if ($date('m') =1){
-			$year = date('Y') ;}
+		if (date('m') == 1 ){
+			$year = date('Y')-1 ;
+			}
 		else{
 			$year = date('Y');
 		}

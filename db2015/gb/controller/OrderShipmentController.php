@@ -120,7 +120,7 @@ class OrderShipmentController extends PageController {
 		$ssn = $_POST['ssn'];
 		$ship_broker = $_POST['ship_broker'];
 		// controleren of de datum voldoet aan het opgestelde patroon voor de datum in SQL
-		if(preg_match('/^[0-9]{4}/[0-9]{2}/[0-9]{2}$/', $date)){ 
+		if(preg_match('/^[0-9]{4}\D[0-9]{2}\D[0-9]{2}$/', $date)){ 
 			// Het aanmaken van een nieuwe orders mapper.
 			$mapper = new mapper\OrdersMapper();
 			// Het opvragen van de connection.
@@ -128,9 +128,10 @@ class OrderShipmentController extends PageController {
 			// Uitvoeren van de insert statements met de nodige gegevens.
 			$con->executeInsertStatement($stmt,array($shipment_id,$ssn,$ship_broker,$price,$date));
 			$con->executeInsertStatement($stmt2,array($shipment_id,$volume,$weight));
-    }	else{
-		echo "Make sure the date matches the yyyy/mm/dd ";
+		}	
+		else{
+			echo "Make sure the date matches the yyyy/mm/dd ";
+		}
 	}
 }
-
 ?>

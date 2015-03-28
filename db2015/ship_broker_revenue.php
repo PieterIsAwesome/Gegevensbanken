@@ -32,7 +32,12 @@
 		<td><?php 
 		$month = 1 + (date('m')-2)%12;
 		$month = sprintf("%02d", $month);
-		$year = date('Y');
+		if (date('m') == 1 ){
+			$year = date('Y')-1 ;
+			}
+		else{
+			$year = date('Y');
+		}
 		echo  $month. "/" .$year ;
         ?> </td>        
 	</tr>     
