@@ -8,7 +8,7 @@
     require_once( "gb/mapper/ShipBrokerMapper.php" );
 	// Het aanmaken van een nieuwe ship broker mapper.
     $mapper = new gb\mapper\ShipBrokerMapper();
-	// op roepen van de reveunes van alle shipbrokers afgelopen maand.
+	// op roepen van de revenues van alle shipbrokers afgelopen maand.
 	$shipbrokerrevenue = $mapper -> getShipBrokerRevenues();
  ?>
  <div class = hoverclass>

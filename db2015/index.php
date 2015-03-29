@@ -17,6 +17,6 @@ echo "Today is " . date("dS F Y"); echo "<br />";
 <img src="http://www.blastr.com/sites/blastr/files/mlp.jpg" width="300px" height="200px">
 <?php
 	// Voer de inhoud van "bottom.tpl.php" uit. Deze verzorgt de
-	// algemene pagina lay-out aan de bovenkant van de pagina.
+	// algemene pagina lay-out aan de onderkant van de pagina.
 	require("template/bottom.tpl.php");
 ?>

@@ -7,7 +7,7 @@ use gb\mapper as Mapper;
 class CreateCustomerController extends PageController {
     function process() {
         if (isset($_POST["create_customer"])) {
-			// We constueren een een array met de ssn, first_name , last_name ,street,number,bus,postal_code,city en mobile phone nummer
+			// We construeren een een array met de ssn, first_name , last_name ,street,number,bus,postal_code,city en mobile phone nummer
 			// Deze gegevens zijn door de gebruiker ingegeven
 			$array = array($_POST["ssn"],$_POST["first_name"],$_POST['last_name'],$_POST["street"],$_POST["number"],$_POST["bus"],$_POST["postal_code"],$_POST["city"],$_POST["mobiphone"]);
 			// We maken een nieuwe CustomerMapper aan.

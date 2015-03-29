@@ -8,7 +8,7 @@
 	require("template/top.tpl.php");
 	
 	// Door gebruik te maken van ShipmentMapper en de functie findAll
-	// creëren we een variabele die alle sipments omvat.
+	// creëren we een variabele die alle shipments omvat.
 	require_once( "gb/mapper/ShipmentMapper.php" );
     $mapper = new gb\mapper\ShipmentMapper();//
     $allShipment = $mapper->findAll();
@@ -38,6 +38,6 @@
 </div>
 <?php
 	// Voer de inhoud van "bottom.tpl.php" uit. Deze verzorgt de
-	// algemene pagina lay-out aan de bovenkant van de pagina.
+	// algemene pagina lay-out aan de onderkant van de pagina.
 	require("template/bottom.tpl.php");
 ?>

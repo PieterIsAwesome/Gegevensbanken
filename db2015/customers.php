@@ -42,6 +42,6 @@
 </div>
 <?php
 	// Voer de inhoud van "bottom.tpl.php" uit. Deze verzorgt de
-	// algemene pagina lay-out aan de bovenkant van de pagina.
+	// algemene pagina lay-out aan de onderkant van de pagina.
 	require("template/bottom.tpl.php");
 ?>

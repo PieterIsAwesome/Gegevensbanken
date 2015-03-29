@@ -25,7 +25,7 @@
         <td style="width: 40%">
             <select style="width: 100%" name="city">
 			 
-				<?php // Maak een drop down menu met de verschillende steden
+				<?php // Maak een dropdown menu met de verschillende steden
 				foreach($allCities as $city){
                 echo "<option value="."'".$city ."'" .">".$city ."</option>" ;}
                 ?>
