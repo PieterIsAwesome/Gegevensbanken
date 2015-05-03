@@ -45,11 +45,11 @@ h2.indexTitle {
 border : 1px solid black;
 border-collapse: collapse;}
 
-.hoverclass th{background:#B8B894;}
+.hoverclass th{background:#CC3399;}
 .hoverclass tr:nth-child(even) {background: #CCC;}
 .hoverclass tr:nth-child(odd) {background: #FFF;}
 
-.hoverclass tr:hover{
+.hoverclass tr:hover td{
 	background: #B8B894;
 }
 .header{
