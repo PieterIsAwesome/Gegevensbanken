@@ -12,7 +12,7 @@ class CustomerMapper extends Mapper {
         parent::__construct();
         $this->selectStmt = "SELECT * FROM CUSTOMER where ssn = ?";
         $this->selectAllStmt = "SELECT * FROM CUSTOMER ";
-		$this->insertStmt = "INSERT INTO CUSTOMER VALUES (?,?,?,?,?,?,?)";
+		$this->insertStmt = "INSERT INTO CUSTOMER VALUES (?,?,?,?,?,?,?,?,?)";
     } 
     
     function getCollection( array $raw ) {
@@ -45,10 +45,9 @@ class CustomerMapper extends Mapper {
     }
 
     protected function doInsert( \gb\domain\DomainObject $object ) {
-        $values = array( $object->getName() ); 
-        $this->insertStmt->execute( $values );
-        $id = self::$PDO->lastInsertId();
-        $object->setId( $id );
+        $values = array($object->getSsn(),$object->getFirstName(),$object->getLastName(),
+		$object->getStreet(),$object->getNumber(),$object->getBus(),$object->getPostalCode(),$object->getCity(),$object->getMobi() ); 
+        self::$con->executeInsertStatement($this->insertStmt,$values);
     }
     
     function update( \gb\domain\DomainObject $object ) {

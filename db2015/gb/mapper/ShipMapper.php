@@ -10,19 +10,19 @@ class ShipMapper extends Mapper {
 
     function __construct() {
         parent::__construct();
-        $this->selectStmt = "SELECT * FROM CUSTOMER where ssn = ?";
+        $this->selectStmt = "SELECT * FROM SHIP where ship_id = ?";
         $this->selectAllStmt = "SELECT * FROM SHIP ";
         
     } 
     
     function getCollection( array $raw ) {
         
-        $customerCollection = array();
+        $shipCollection = array();
         foreach($raw as $row) {
-            array_push($customerCollection, $this->doCreateObject($row));
+            array_push($shipCollection, $this->doCreateObject($row));
         }
         
-        return $customerCollection;
+        return $shipCollection;
     }
 
     protected function doCreateObject( array $array ) {
@@ -40,7 +40,10 @@ class ShipMapper extends Mapper {
     }
     
     function update( \gb\domain\DomainObject $object ) {
-        
+		// Het voorbereiden van het update statement.
+			$stmt =" Update ship set ship_name = ?, type = ? where ship_id = ?";
+			self::$con-> executeUpdateStatement($stmt, array($object->getShipName(),$object->getType(),$object->getShipId()));
+			
     }
 
     function selectStmt() {
