@@ -55,7 +55,9 @@ class Orders extends DomainObject {
     function getOrderDate() {
         return $this->order_date;
     }
-    
+    function getArray(){
+		return array($this->getShipmId( ),$this->getCustomerSsn (),$this->getShipBrokerName (),$this->getPrice (),$this->getOrderDate());
+	}
 }
 
 ?>

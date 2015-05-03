@@ -37,5 +37,8 @@ class Shipment extends DomainObject {
 	function getWeight () {
 		return $this->weight;
 	}
+	function getArray(){
+		return array($this->getShipmId(),$this->getVolume(),$this->getWeight());
+	}
  }
 ?>

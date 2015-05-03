@@ -11,7 +11,9 @@ class OrdersMapper extends Mapper {
     function __construct() {
         parent::__construct();
         $this->selectStmt = "SELECT * FROM ORDERS where shipment_id = ? and ssn = ? and ship_broker_name = ?";
-        $this->selectAllStmt = "SELECT * FROM ORDERS";     
+        $this->selectAllStmt = "SELECT * FROM ORDERS"; 
+		// Voorbereiden van het insert statement voor de gegevens die in de tabel orders geplaatst moeten worden. 
+        $this->insertStmt = "insert into orders values (?,?,?,?,?)";		
     } 
     
     function getCollection( array $raw ) {
@@ -41,6 +43,7 @@ class OrdersMapper extends Mapper {
     }
 
     protected function doInsert( \gb\domain\DomainObject $object ) {
+        self::$con->executeInsertStatement($this->insertStmt,$object->getArray());
         /*$values = array( $object->getName() ); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();

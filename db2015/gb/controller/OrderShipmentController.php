@@ -2,6 +2,9 @@
 namespace gb\controller;
 
 require_once("gb/controller/PageController.php");
+require_once("gb/domain/Shipment.php");
+require_once("gb/domain/Orders.php");
+require_once("gb/mapper/ShipmentMapper.php");
 require_once("gb/mapper/CustomerMapper.php" );
 require_once("gb/mapper/OrdersMapper.php");
 use gb\mapper as mapper;
@@ -112,22 +115,22 @@ class OrderShipmentController extends PageController {
 		// Voorbereiden van het insert statement voor de gegevens die in de tabel shipment geplaatst moeten worden.
 		$stmt2 = "insert into shipment values (?,?,?)";
 		// Opslaan van de door de gebruiker ingegeven gegevens.
-		$shipment_id = $_POST['shipment_id'];
-		$volume = $_POST['volume'];
-		$weight = $_POST['weight'];
-		$price = $_POST['price'];
-		$date = $_POST['date'];
-		$ssn = $_POST['ssn'];
-		$ship_broker = $_POST['ship_broker'];
+		$shipment = new \gb\domain\Shipment($_POST['shipment_id']);
+		$shipment->setShipmId($_POST['shipment_id']);
+		$shipment->setVolume($_POST['volume']);
+		$shipment->setWeight($_POST['weight']);
+		$order = new \gb\domain\Orders($_POST['shipment_id']);
+		$order->setShipmId($_POST['shipment_id']);
+		$order->setCustomerSsn($_POST['ssn']);
+		$order->setShipBrokerName($_POST['ship_broker']);
+		$order->setPrice($_POST['price']);
+		$order->setOrderDate($_POST['date']);
 		// controleren of de datum voldoet aan het opgestelde patroon voor de datum in SQL
-		if(preg_match('/^[0-9]{4}\D[0-9]{2}\D[0-9]{2}$/', $date)){ 
-			// Het aanmaken van een nieuwe orders mapper.
-			$mapper = new mapper\OrdersMapper();
-			// Het opvragen van de connection.
-			$con = $mapper->getConnectionManager();
-			// Uitvoeren van de insert statements met de nodige gegevens.
-			$con->executeInsertStatement($stmt,array($shipment_id,$ssn,$ship_broker,$price,$date));
-			$con->executeInsertStatement($stmt2,array($shipment_id,$volume,$weight));
+		if(preg_match('/^[0-9]{4}\D[0-9]{2}\D[0-9]{2}$/', $_POST['date'])){ 
+			$shipmentMapper = new \gb\mapper\ShipmentMapper();
+			$shipmentMapper->insert($shipment);
+			$orderMapper = new \gb\mapper\OrdersMapper();
+			$orderMapper->insert($order);
 		}	
 		else{
 			echo "Make sure the date matches the yyyy/mm/dd ";
