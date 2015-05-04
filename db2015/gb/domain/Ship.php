@@ -8,6 +8,7 @@ class Ship extends DomainObject {
     private $ship_id;
     private $ship_name;
     private $type;    
+	private $shippingLineID;
 
     function __construct( $id=null ) {
         //$this->name = $name;
@@ -37,6 +38,12 @@ class Ship extends DomainObject {
     function getType () {
         return $this->type;
     }
+	function getShippingLine(){
+		return $this->shippingLineID;
+	}
+	function setShippingLine($id){
+		$this->shippingLineID = $id;
+	}
 }
 
 ?>

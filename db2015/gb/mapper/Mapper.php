@@ -20,7 +20,6 @@ abstract class Mapper {
         foreach($rows as $row) {
             $result = $row;
         }
-        
         $object = $this->createObject( $result );
         return $object; 
     }

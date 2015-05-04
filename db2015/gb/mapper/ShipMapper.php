@@ -31,7 +31,7 @@ class ShipMapper extends Mapper {
         $obj->setShipId($array['ship_id']);
         $obj->setShipName($array['ship_name']);
         $obj->setType($array['type']);
-        
+        $obj->setShippingLine($array['owner_id']);
         return $obj;
     }
 
@@ -54,7 +54,21 @@ class ShipMapper extends Mapper {
         return $this->selectAllStmt;
     }
     
-    
+    function getShippingLine($id){
+		$stmt = "SELECT shipping_line_name AS SN FROM shipping_line WHERE shipping_line_code= ?";
+		$array = array($id);
+		$rows = self::$con->executeSelectStatement($stmt,$array);
+		foreach($rows as $row) {
+            $result = $row;
+        }
+        return $result; 
+		
+	}
+	function getTrips($ship){
+		$stmt = "SELECT R.from_port_code AS FPC,R.to_port_code AS TPC,T.departure_date AS DD,T.arrival_date as AD ,T.Route_id AS RI FROM Trip AS T,Route As R WHERE T.ship_id = ? AND T.Route_id =R.Route_id";
+		$result = self::$con->executeSelectStatement($stmt,array($ship->getShipId()));
+		return $result;
+	}
 }
 
 

@@ -13,6 +13,7 @@ class Customer extends DomainObject {
     private $bus;
     private $postal_code;
     private $city;
+	private $mobi;
 
     function __construct( $id=null ) {
         //$this->name = $name;
@@ -85,6 +86,12 @@ class Customer extends DomainObject {
     function getCity () {
         return $this->city;
     }
+	function getMobi(){
+		return $this->mobi;
+	}
+	function setMobi($mobi){
+		$this->mobi = $mobi;
+	}
 
 }
 

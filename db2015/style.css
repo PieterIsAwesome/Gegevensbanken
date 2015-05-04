@@ -6,7 +6,7 @@ div.main, div.navigation {
 }
 
 div.navigation {
-   background: #FFFF83;
+   background: #FF33CC;
    color: #000;
    float: left;
    width: 33%;
@@ -17,7 +17,7 @@ div.main {
    background: #fff;
    color: #000;
    float: left;
-   width: 64%;
+   width: 66%;
    margin-bottom: 0;
    border-left: 1px solid #000;
 }
@@ -53,7 +53,7 @@ border-collapse: collapse;}
 	background: #B8B894;
 }
 .header{
-	background-color:green;
+	background-color:#FF66CC;
 	height: 100px;
 	}
 .header h1{

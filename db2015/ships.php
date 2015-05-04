@@ -24,7 +24,7 @@
  ?>
        <tr>
            <td><a href = 'update_ship.php?ship_id=<?php echo $ship->getShipId(); ?>&type=<?php echo $ship->getType(); ?>&name=<?php echo $ship->getShipName(); ?>'><?php echo $ship->getShipId(); ?></td>
-		<td><?php echo $ship->getShipName(); ?></td>
+		<td><a href = 'ship_info.php?ship_id=<?php echo $ship->getShipId(); ?>'><?php echo $ship->getShipName(); ?></a></td>
 		<td><?php echo $ship->getType(); ?></td>                
 	</tr>     
 <?php        
@@ -34,6 +34,7 @@
 
 </table>
 </div>
+
 <?php
 	// Voer de inhoud van "bottom.tpl.php" uit. Deze verzorgt de
 	// algemene pagina lay-out aan de onderkant van de pagina.
