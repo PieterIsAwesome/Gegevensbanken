@@ -69,6 +69,13 @@ class ShipMapper extends Mapper {
 		$result = self::$con->executeSelectStatement($stmt,array($ship->getShipId()));
 		return $result;
 	}
+	function getShipsShippingLine($shiplineid){
+		$stmt = "SELECT * FROM ship WHERE owner_id = ? ";
+		$result = self::$con->executeSelectStatement($stmt,array($shiplineid));
+		
+		
+		return $this->getCollection($result);
+	}
 }
 
 

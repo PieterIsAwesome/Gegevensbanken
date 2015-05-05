@@ -3,7 +3,7 @@ namespace gb\domain;
 
 require_once( "gb/domain/DomainObject.php" );
 
-class Ship extends DomainObject {    
+class ShippingLine extends DomainObject {    
       
     private $shipping_line_code;
     private $shipping_line_name;

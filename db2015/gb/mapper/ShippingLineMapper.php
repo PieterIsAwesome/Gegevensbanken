@@ -26,6 +26,7 @@ class ShippingLineMapper extends Mapper {
     }
 
     protected function doCreateObject( array $array ) {
+		
         $obj = new \gb\domain\ShippingLine( $array['shipping_line_code'] );
         
         $obj->setShippingLineCode ($array['shipping_line_code']);
