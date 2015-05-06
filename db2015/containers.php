@@ -17,7 +17,16 @@
 		<?php foreach($containers as $container){ ?>
 			<tr>
 				<td>
-				<?php $container->getContainerID(); ?>
+				<?php echo $container->getContainerID(); ?>
+				</td>
+				<td>
+				<?php echo $container->getLength(); ?>
+				</td>
+				<td>
+				<?php echo $container->getWidth(); ?>
+				</td>
+				<td>
+				<?php echo $container->getHeight(); ?>
 				</td>
 			</tr>
 		<?php } ?>

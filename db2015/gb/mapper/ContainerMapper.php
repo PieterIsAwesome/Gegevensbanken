@@ -15,11 +15,11 @@ class ContainerMapper extends Mapper {
     } 
 	function getContainers($ship_id,$route_id,$departure_date){
 		$stmt = "SELECT Distinct C.container_id,C.Shipping_line_code,C.lenght,C.height,C.width,C.weight FROM Container as C, ships as S WHERE C.container_id = 
-		S.container_id AND S.ship_id = ? AND S.Route_id = ? AND S.Departure_date =  ? ";
+		S.container_id AND S.ship_id = ? AND S.Route_id = ? AND S.Departure_date =   " . "'".$departure_date."'";
 		echo "'".$departure_date."'";
-		$result = self::$con->executeSelectStatement($stmt,array($ship_id,$route_id,"'".$departure_date."'"));
-		print_r($result);
-		return $result;
+		$result = self::$con->executeSelectStatement($stmt,array($ship_id,$route_id,));
+		
+		return $this->getCollection($result);
 	}
 	 function getCollection( array $raw ) {
         
@@ -34,9 +34,9 @@ class ContainerMapper extends Mapper {
     protected function doCreateObject( array $array ) {
         $obj = new \gb\domain\Container( $array['container_id'] );
         
-        $obj->setContainerId($array['ship_id']);
+        $obj->setContainerId($array['container_id']);
         $obj->setShippingLineCode($array['Shipping_line_code']);
-        $obj->setLength($array['length']);
+        $obj->setLength($array['lenght']);
         $obj->setWidth($array['width']);
 		$obj->setHeight($array['height']);
 		$obj->setWeight($array['weight']);

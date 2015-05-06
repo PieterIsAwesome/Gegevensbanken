@@ -16,7 +16,7 @@ class Container extends DomainObject {
         parent::__construct( $id );
     }
         
-    function setCountainerId ( $container_id ) {
+    function setContainerId ( $container_id ) {
         $this->container_id = $container_id;        
     }
     
@@ -28,7 +28,7 @@ class Container extends DomainObject {
         $this->shipping_line_code = $shipping_line_code;
     }
     
-    function getContainerName() {
+    function getShippingLineCode() {
         return $this->shipping_line_code;
     }
     
