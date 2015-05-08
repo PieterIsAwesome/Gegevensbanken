@@ -20,6 +20,12 @@ class ContainerMapper extends Mapper {
 
 		return $this->getCollection($result);
 	}
+	function getNbOfContainers($ship_id,$route_id,$departure_date){
+		
+		$stmt = "SELECT COUNT(Distinct container_id) AS count FROM ships WHERE ship_id = ? AND route_id = ? AND Departure_date="."'".$departure_date."'";
+		$result = self::$con->executeSelectStatement($stmt,array($ship_id,$route_id));
+		return $result[0]['count'];
+	}
 	 function getCollection( array $raw ) {
         
         $shipCollection = array();

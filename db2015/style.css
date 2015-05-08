@@ -6,7 +6,7 @@ div.main, div.navigation {
 }
 
 div.navigation {
-   background: #FF33CC;
+   background: #FFFF99;
    color: #000;
    float: left;
    width: 33%;
@@ -45,7 +45,7 @@ h2.indexTitle {
 border : 1px solid black;
 border-collapse: collapse;}
 
-.hoverclass th{background:#CC3399;}
+.hoverclass th{background:#A3A342;}
 .hoverclass tr:nth-child(even) {background: #CCC;}
 .hoverclass tr:nth-child(odd) {background: #FFF;}
 
@@ -53,7 +53,7 @@ border-collapse: collapse;}
 	background: #B8B894;
 }
 .header{
-	background-color:#FF66CC;
+	background-color:#005C00;
 	height: 100px;
 	}
 .header h1{

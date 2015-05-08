@@ -8,10 +8,11 @@
 	require("template/top.tpl.php");
 	require_once("gb/mapper/ShipMapper.php");
 	require_once("gb/mapper/PortMapper.php");
-	
+	require_once("gb/mapper/ContainerMapper.php")
 ?>
 <?php 	$shipMapper = new gb\mapper\ShipMapper();
 		$portMapper = new gb\mapper\PortMapper();
+		$containerMapper = new gb\mapper\ContainerMapper();
 		$ship_id = $_GET['ship_id']; 
 		$ship = $shipMapper->find($ship_id);
 		$shippingLine = $shipMapper->getShippingLine($ship->getShippingLine());
@@ -53,6 +54,7 @@
 				<th>To port</th>
 				<th>Departure date</th>
 				<th>Arrival date</th>
+				<th>Nb of containers</th>
 			</tr>
 			<?php foreach($trips as $trip){
 			?>
@@ -62,7 +64,7 @@
 					<td><?php echo $trip['DD']; ?></td>
 					<td><?php echo $trip['AD']; ?></td>
 					<td><a href='containers.php?ship_id=
-					<?php echo $ship->getShipId(); ?>&route_id=<?php echo $trip['RI']; ?>&departure_date=<?php echo $trip['DD'];?>'>Containers</a></td>
+					<?php echo $ship->getShipId(); ?>&route_id=<?php echo $trip['RI']; ?>&departure_date=<?php echo $trip['DD'];?>'><?php echo $containerMapper->getNbOfContainers($ship->getShipId(),$trip['RI'],$trip['DD']) ;?></a></td>
 				</tr>
 			<?php } ?>
 		</table>
