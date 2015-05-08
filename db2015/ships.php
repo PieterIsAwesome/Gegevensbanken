@@ -16,7 +16,6 @@
 	// We herbenoemen de variabele allShip naar ship en selecteren
 	// telkens één element ervan. Voor elk element maken we een nieuwe
 	// rij in de tabel met de bijbehorende eigenschappen van het element.
-	// TODO COMMENTAAR UPDATE_SHIP
     require_once( "gb/mapper/ShipMapper.php" );
     $mapper = new gb\mapper\ShipMapper();//
     $allShip = $mapper->findAll();

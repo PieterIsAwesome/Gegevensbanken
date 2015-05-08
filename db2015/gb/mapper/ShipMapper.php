@@ -65,11 +65,13 @@ class ShipMapper extends Mapper {
 		
 	}
 	function getTrips($ship){
+		// Geeft de trips die een bepaald schip heeft gedaan weer
 		$stmt = "SELECT R.from_port_code AS FPC,R.to_port_code AS TPC,T.departure_date AS DD,T.arrival_date as AD ,T.Route_id AS RI FROM Trip AS T,Route As R WHERE T.ship_id = ? AND T.Route_id =R.Route_id";
 		$result = self::$con->executeSelectStatement($stmt,array($ship->getShipId()));
 		return $result;
 	}
 	function getShipsShippingLine($shiplineid){
+		// Geeft de schepen van een bepaalde shipping line weer
 		$stmt = "SELECT * FROM ship WHERE owner_id = ? ";
 		$result = self::$con->executeSelectStatement($stmt,array($shiplineid));
 		

@@ -10,7 +10,11 @@
 	require_once("gb/mapper/PortMapper.php");
 	
 ?>
-<?php 	$shipMapper = new gb\mapper\ShipMapper();
+<?php 	
+		// Geeft de shipping line, het type en het totale aantal dagen op zee van een bepaalde schip terug.
+		// en van elke trip afgelegd door dit schip wordt de vertrekhaven, de aankomsthaven, de vertrekdatum
+		// en de aankomstdatum weergegeven. Ook worden alle bezochte poorten getoond.
+		$shipMapper = new gb\mapper\ShipMapper();
 		$portMapper = new gb\mapper\PortMapper();
 		$ship_id = $_GET['ship_id']; 
 		$ship = $shipMapper->find($ship_id);

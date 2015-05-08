@@ -6,13 +6,14 @@
 	// Voer de inhoud van "top.inc.php" uit. Deze verzorgt de
 	// algemene pagina lay-out en het menu.
 	require("template/top.tpl.php");
-
+	// Geeft de mogelijkheid om het ID, de naam en het type van een schip aan te passen in de tabel.
     require_once( "gb/controller/UpdateShipController.php" );
     $updateShipController = new gb\controller\UpdateShipController();
     $updateShipController->process();
 ?> 
 
 <form action="" method="post" >
+
 
 <table>
     <tr>
