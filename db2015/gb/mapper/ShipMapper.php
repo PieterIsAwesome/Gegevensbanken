@@ -14,6 +14,13 @@ class ShipMapper extends Mapper {
         $this->selectAllStmt = "SELECT * FROM SHIP ";
         
     } 
+	function findAllSortOn($Sort_On){
+		
+		$stmt = "SELECT * FROM SHIP ORDER BY ".$Sort_On;
+		$result = self::$con->executeSelectStatement($stmt,array());
+		
+		return $this->getCollection($result);
+	}
     
     function getCollection( array $raw ) {
         
@@ -32,6 +39,7 @@ class ShipMapper extends Mapper {
         $obj->setShipName($array['ship_name']);
         $obj->setType($array['type']);
         $obj->setShippingLine($array['owner_id']);
+		$obj->setDaysOnSea($this->getDaysOnSea($obj));
         return $obj;
     }
 
@@ -65,18 +73,26 @@ class ShipMapper extends Mapper {
 		
 	}
 	function getTrips($ship){
-		// Geeft de trips die een bepaald schip heeft gedaan weer
 		$stmt = "SELECT R.from_port_code AS FPC,R.to_port_code AS TPC,T.departure_date AS DD,T.arrival_date as AD ,T.Route_id AS RI FROM Trip AS T,Route As R WHERE T.ship_id = ? AND T.Route_id =R.Route_id";
 		$result = self::$con->executeSelectStatement($stmt,array($ship->getShipId()));
 		return $result;
 	}
 	function getShipsShippingLine($shiplineid){
-		// Geeft de schepen van een bepaalde shipping line weer
 		$stmt = "SELECT * FROM ship WHERE owner_id = ? ";
 		$result = self::$con->executeSelectStatement($stmt,array($shiplineid));
 		
 		
 		return $this->getCollection($result);
+	}
+	function getDaysOnSea($ship){
+		$trips = $this->getTrips($ship);
+		$daysAtSea = 0;
+		foreach ($trips as $trip){
+			$date1 = new \DateTime($trip['AD']);
+			$date2 = new \DateTime($trip['DD']);
+			$daysAtSea += $date1->diff($date2)->days + 1;
+		}
+		return $daysAtSea;
 	}
 }
 

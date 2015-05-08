@@ -15,10 +15,9 @@ class ContainerMapper extends Mapper {
     } 
 	function getContainers($ship_id,$route_id,$departure_date){
 		$stmt = "SELECT Distinct C.container_id,C.Shipping_line_code,C.lenght,C.height,C.width,C.weight FROM Container as C, ships as S WHERE C.container_id = 
-		S.container_id AND S.ship_id = ? AND S.Route_id = ? AND S.Departure_date =   " . "'".$departure_date."'";
-		echo "'".$departure_date."'";
-		$result = self::$con->executeSelectStatement($stmt,array($ship_id,$route_id,));
-		
+		S.container_id AND C.shipping_line_code = S.shipping_line_code AND S.ship_id = ? AND S.Route_id = ? AND S.Departure_date = "."'".$departure_date."'";
+		$result = self::$con->executeSelectStatement($stmt,array($ship_id,$route_id));
+
 		return $this->getCollection($result);
 	}
 	 function getCollection( array $raw ) {
@@ -60,5 +59,10 @@ class ContainerMapper extends Mapper {
     function selectAllStmt() {
         return $this->selectAllStmt;
     }
+	function getShippingLineName($container){
+		$stmt = "SELECT shipping_line_name FROM shipping_line WHERE shipping_line_code = ?";
+		return self::$con->executeSelectStatement($stmt,array($container->getShippingLineCode()))[0]['shipping_line_name'];
+		
+	}
 }
 ?>

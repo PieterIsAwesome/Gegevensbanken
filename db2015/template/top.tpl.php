@@ -25,7 +25,7 @@ session_start(); 		// -- session_start() op deze plek is niet erg netjes, maar v
         <li><a href="orders.php">Orders</a></li>
         <li><a href="customers_in_city.php">Customers in cities</a></li>               
         <li><a href="ship_broker_revenue.php">Ship broker revenues</a></li>
-        <li><a href="ships.php">Ships</a></li>        
+        <li><a href='ships.php?sort_on=ship_id'>Ships</a></li>        
         <li><a href="create_customer.php">Create new customer</a></li> 
         <li><a href="order_shipment.php">Order shipments</a></li>
 		<li><a href="shippingLines.php">Shipping Lines</a></li>

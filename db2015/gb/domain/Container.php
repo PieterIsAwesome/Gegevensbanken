@@ -23,12 +23,14 @@ class Container extends DomainObject {
     function getContainerId () {
         return $this->container_id;
     }
-    
+    function getShippingLineCode(){
+		return $this->shipping_line_code;
+	}
     function setShippingLineCode ($shipping_line_code) {
         $this->shipping_line_code = $shipping_line_code;
     }
     
-    function getShippingLineCode() {
+    function getContainerName() {
         return $this->shipping_line_code;
     }
     
@@ -56,8 +58,8 @@ class Container extends DomainObject {
 	function getWeight(){
 		return $this->weight;
 	}
-	function setWeight(){
-		return $this->weight;
+	function setWeight($weight){
+		return $this->weight = $weight;
 	}
 }
 
