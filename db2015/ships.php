@@ -38,7 +38,7 @@
  ?>
        <tr>
            <td><a href = 'update_ship.php?ship_id=<?php echo $ship->getShipId(); ?>&type=<?php echo $ship->getType(); ?>&name=<?php echo $ship->getShipName(); ?>'><?php echo $ship->getShipId(); ?></td>
-		<td><a href = 'ship_info.php?ship_id=<?php echo $ship->getShipId(); ?>'><?php echo $ship->getShipName(); ?></a></td>
+		<td><a href = 'ship_info.php?ship_id=<?php echo $ship->getShipId(); ?>&sort_on=DD'><?php echo $ship->getShipName(); ?></a></td>
 		<td><?php echo $ship->getType(); ?></td>     
 		<td><?php echo $ship->getDaysOnSea();?></td>
 	</tr>     

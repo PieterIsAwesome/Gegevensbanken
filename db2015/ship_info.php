@@ -27,6 +27,7 @@
 			$daysAtSea += $date1->diff($date2)->days + 1;
 		}
 		$ports = array_unique($ports);
+		asort($ports);
 		?>
 		
 	<h1><?php echo $ship->getShipName(); ?> </h1>
@@ -50,23 +51,13 @@
 		<div class="hoverclass">
 		<table>
 			<tr>
-				<th>From port</th>
-				<th>To port</th>
-				<th>Departure date</th>
-				<th>Arrival date</th>
+				<th><a href = 'ship_info.php?ship_id=<?php echo $ship_id ;?>&sort_on=FPC'>From port</a></th>
+				<th><a href = 'ship_info.php?ship_id=<?php echo $ship_id ;?>&sort_on=TPC'>To port</a></th>
+				<th><a href = 'ship_info.php?ship_id=<?php echo $ship_id ;?>&sort_on=DD'>Departure date</a></th>
+				<th><a href = 'ship_info.php?ship_id=<?php echo $ship_id ;?>&sort_on=AD'>Arrival date</a></th>
 				<th>Nb of containers</th>
 			</tr>
-			<?php foreach($trips as $trip){
-			?>
-				<tr>
-					<td><?php echo $portMapper->find($trip['FPC'])->getPortName(); ?></td>
-					<td><?php echo $portMapper->find($trip['TPC'])->getPortName(); ?></td>
-					<td><?php echo $trip['DD']; ?></td>
-					<td><?php echo $trip['AD']; ?></td>
-					<td><a href='containers.php?ship_id=
-					<?php echo $ship->getShipId(); ?>&route_id=<?php echo $trip['RI']; ?>&departure_date=<?php echo $trip['DD'];?>'><?php echo $containerMapper->getNbOfContainers($ship->getShipId(),$trip['RI'],$trip['DD']) ;?></a></td>
-				</tr>
-			<?php } ?>
+			<?php require_once('tripSorterController.php') ?>
 		</table>
 		</div>
 		<br>
@@ -74,6 +65,9 @@
 		<h1> Visited ports </h1>
 		<div class = "hoverclass";>
 			<table>
+			<tr>
+				<th>Ports</th>
+			</tr>
 				<?php foreach($ports as $port){ ?>
 				<tr>
 					<td>

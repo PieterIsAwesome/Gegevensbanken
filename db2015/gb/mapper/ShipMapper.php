@@ -77,6 +77,12 @@ class ShipMapper extends Mapper {
 		$result = self::$con->executeSelectStatement($stmt,array($ship->getShipId()));
 		return $result;
 	}
+	function getTripsSortOn($ship,$sort_on){
+		$stmt = "SELECT R.from_port_code AS FPC,R.to_port_code AS TPC,T.departure_date AS DD,T.arrival_date as AD ,T.Route_id AS RI 
+		FROM Trip AS T,Route As R WHERE T.ship_id = ? AND T.Route_id =R.Route_id ORDER BY ".$sort_on ;
+		$result = self::$con->executeSelectStatement($stmt,array($ship->getShipId()));
+		return $result;
+	}
 	function getShipsShippingLine($shiplineid){
 		$stmt = "SELECT * FROM ship WHERE owner_id = ? ";
 		$result = self::$con->executeSelectStatement($stmt,array($shiplineid));
